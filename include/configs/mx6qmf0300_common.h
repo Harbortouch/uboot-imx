@@ -143,8 +143,13 @@
         "rdinit=/sdcard.flasher.rc " \
         "enable_wait_mode=off "\
         "video=mxcfb0:dev=ldb,fbpix=RGB32,bpp=32 " \
+        "video=mxcfb1:dev=hdmi,if=RGB24,bpp=32 " \
+        "video=mxcfb2:off " \
+        "video=mxcfb3:off " \
         "consoleblank=0 " \
         "androidboot.hardware=freescale " \
+        "androidboot.soc_type=imx6q " \
+        "androidboot.storage_type=sd " \
         "cma=384M " \
         "\0" \
     "script=firmware/boot.scr\0" \
@@ -161,11 +166,15 @@
         "rootfstype=ext4 " \
         "enable_wait_mode=off "\
         "video=mxcfb0:dev=ldb,fbpix=RGB32,bpp=32 " \
-        "video=mxcfb1:off video=mxcfb2:off video=mxcfb3:off " \
+        "video=mxcfb1:dev=hdmi,if=RGB24,bpp=32 " \
+        "video=mxcfb2:off " \
+        "video=mxcfb3:off " \
         "vmalloc=128M " \
         "androidboot.console=" CONFIG_CONSOLE_DEV " " \
         "consoleblank=0 " \
         "androidboot.hardware=freescale " \
+        "androidboot.soc_type=imx6q " \
+        "androidboot.storage_type=emmc " \
         "cma=448M " \
         "galcore.contiguousSize=33554432 " \
         "\0" \
@@ -180,11 +189,15 @@
         "rootfstype=ext4 " \
         "enable_wait_mode=off "\
         "video=mxcfb0:dev=ldb,fbpix=RGB32,bpp=32 " \
-        "video=mxcfb1:off video=mxcfb2:off video=mxcfb3:off " \
+        "video=mxcfb1:dev=hdmi,if=RGB24,bpp=32 " \
+        "video=mxcfb2:off " \
+        "video=mxcfb3:off " \
         "vmalloc=128M " \
         "androidboot.console=" CONFIG_CONSOLE_DEV " " \
         "consoleblank=0 " \
         "androidboot.hardware=freescale " \
+        "androidboot.soc_type=imx6q " \
+        "androidboot.storage_type=emmc " \
         "androidboot.selinux=permissive " \
         "cma=448M " \
         "galcore.contiguousSize=33554432 " \
@@ -242,7 +255,7 @@
 
 #if defined CONFIG_SYS_BOOT_MMC
 #define CONFIG_ENV_IS_IN_MMC            /* read U-Boot command from MMC */
-#define CONFIG_BOOTCOMMAND              "run bootcmd_android;"
+#define CONFIG_BOOTCOMMAND              "run bootcmd_android_permissive;"
 #define CONFIG_SPLASH_SCREEN
 #define CONFIG_SPLASH_SCREEN_ALIGN
 #elif defined CONFIG_SYS_BOOT_MFG
@@ -253,7 +266,7 @@
 #define CONFIG_BOOTCOMMAND              "run bootcmd_sdcard;"
 #else
 #define CONFIG_ENV_IS_IN_MMC            /* read U-Boot command from MMC by default */
-#define CONFIG_BOOTCOMMAND              "run bootcmd_android;"
+#define CONFIG_BOOTCOMMAND              "run bootcmd_android_permissive;"
 #define CONFIG_SPLASH_SCREEN
 #define CONFIG_SPLASH_SCREEN_ALIGN
 #endif
